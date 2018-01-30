@@ -17,19 +17,22 @@ window.addEventListener('load', ()=>{
 	}
 	
 	convert = (site) =>{
-			let arr = [];
+			let arrImg = [];
+			let arrVid = [];
 			site = site.slice(site.indexOf('<div class="image rolled">'), site.length);
 			site = site.slice(0,site.indexOf('<!-- Billboard__SG_bottom -->'));
 			for(let i=0;i<8;i++){
 				let x = site.slice(site.indexOf("<img src="),site.indexOf(" />"));
 				x = x.slice(x.indexOf("https://"),x.indexOf(".jpg")+4);
-				arr[i]=x;
+				if(x!=='https://i1.jbzdy.pl/users/default.jpg'){
+					arrImg[i]=x;
+				}
 				site = site.slice(site.indexOf('<div class="media">'),site.length);
 				site = site.slice(site.indexOf('<div class="image rolled">'),site.length);
 			}
 			let allImages = '';
 			for(let i=0;i<8;i++){
-				allImages = allImages + '<img src="' + arr[i] + '"/>';
+				allImages = allImages + '<img src="' + arrImg[i] + '"/>';
 			}
 			let imagesElement = document.querySelector(".images");
 			imagesElement.innerHTML = allImages;
