@@ -35,8 +35,6 @@ window.addEventListener('load', ()=>{
 			imagesElement.innerHTML = allImages;
 	}
 	sendRequest(currentSite);
-	let btn = document.getElementsByClassName("next-btn")[0];
-	let pbtn = document.getElementsByClassName("prev-btn")[0];
 	prevRequest = () =>{
 		if(currentSite!==1) currentSite-=1;
 		sendRequest(currentSite);
@@ -47,6 +45,8 @@ window.addEventListener('load', ()=>{
 		sendRequest(currentSite);
 		window.scrollTo(0,0);
 	}
+	let btn = document.getElementsByClassName("next-btn")[0];
+	let pbtn = document.getElementsByClassName("prev-btn")[0];
 	btn.addEventListener('click',nextRequest,false);
 	pbtn.addEventListener('click',prevRequest,false);
 })
